@@ -1,3 +1,4 @@
+//own
 Given a string s, find the length of the longest substring without repeating characters.
 
 Example 1:
@@ -34,23 +35,33 @@ public:
         if(s.size()==0 || s.size()==1)
         	return s.size();
         int i=0,j=i+1;
+/* The idea here is to use to pointers i and j and map the characters in the range [i-j] with their indices 
+   and when moving j check if the map already contains the current character(s[j]), if it is present then
+   first check if it's index(mapped value) is less than i and update else move the i pointer by that index+1 and 
+   update the index of the current value and also keep updating the max length seen so far.
+ */
         map<char,int> mp;
         mp[s[0]-'a']=0;
         int ans=1;
         while(j<s.size())
         {
-            if(mp.count(s[j]-'a'))
+            if(mp.count(s[j]-'a'))// checks if the current character already encountered
             {
-                if(mp[s[j]-'a']<i){mp[s[j]-'a']=j;ans=max(ans,j-i+1);}
+                if(mp[s[j]-'a']<i) // if it is encountered before i update it.
+                 {
+                     mp[s[j]-'a']=j;
+                     ans=max(ans,j-i+1);
+                 }
                 else{
-                i=mp[s[j]-'a']+1;
+
+                i=mp[s[j]-'a']+1; // update the current index.
                 mp[s[j]-'a']=j;
                 }
             }
             else
             {
                 ans=max(ans,j-i+1);
-                mp[s[j]-'a']=j;
+                mp[s[j]-'a']=j;    // map the current index as it is not encountered
             }
             j++;
         }
