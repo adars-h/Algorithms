@@ -8,8 +8,8 @@
   element 3 like this head->1->2->4-> 3<-5<-6<-ans  and we are at currently node 4 in the recursive call,then we 
   need to set 3's next pointer value to current node which is 4 and current's next pointer to NULL,and return the 
   head then our list will become like 1->2-> 4<-3<-5<-6<-head 
-                                   |
-                                  NULL
+                                             |
+                                            NULL
 */
 ListNode* reverse(ListNode* head)
 {
