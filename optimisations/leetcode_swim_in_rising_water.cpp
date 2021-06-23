@@ -41,7 +41,8 @@ public:
             up = possible(grid,time,i-1,j,curr+arg,mp);
         }
         if(j-1>=0 && !mp.count({i,j-1}))
-        {int arg;
+        {
+            int arg;
             if(grid[i][j]<=curr || grid[i][j-1]<=curr)
                 arg = 0;
             else
@@ -49,7 +50,8 @@ public:
            left = possible(grid,time,i,j-1,curr+arg,mp);
         }
         if(j+1<grid[0].size() && !mp.count({i,j+1}))
-        {int arg;
+        {
+            int arg;
            if(grid[i][j]<=curr || grid[i][j+1]<=curr)
                 arg = 0;
             else
@@ -57,7 +59,8 @@ public:
            right = possible(grid,time,i,j+1,curr+arg,mp);
         }
         if(i+1<grid.size() && !mp.count({i+1,j}))
-        {int arg;
+        {
+            int arg;
             if(grid[i][j]<=curr || grid[i+1][j]<=curr)
                 arg = 0;
             else
